@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
   <img src="http://git.oschina.net/uploads/images/2017/0222/194334_0f219bc2_8819.png"><br><br>
 </div>
@@ -22,3 +23,6 @@ sls文件，然后调用salt进行发布的动作，发布完后应用与主机�
 # 文档
 
 采用OSC Team里面提供的文档功能，传送门 http://saltops.mydoc.io/
+=======
+#saltops
+>>>>>>> 268ca4de779be5c17391c33d3ad0a10542b4002d
