@@ -7,3 +7,4 @@ from .ISP import ISP
 from .ServiceName import ServiceName
 from .Rack import Rack
 from .HostGroup import HostGroup
+from .Server import Server
