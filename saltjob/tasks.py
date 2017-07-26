@@ -9,7 +9,7 @@ import yaml
 from celery import task
 from post_office import mail
 
-from cmdb.models import Host, HostIP
+from cmdb.models import Host, HostIP, Server
 from deploy_manager.models import *
 from saltjob.salt_https_api import salt_api_token
 from saltjob.salt_token_id import token_id
