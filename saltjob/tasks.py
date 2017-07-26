@@ -666,7 +666,7 @@ def scanServerJob():
             rs = Server.objects.filter(host=host)
             if len(rs) == 0:
                 logger.info("新增服务:%s", host)
-                print "新增服务"
+                print("新增服务")
                 productname = ""
 
 
@@ -678,7 +678,7 @@ def scanServerJob():
             else:
                 rs = Server.objects.filter(host=host)
                 if rs is not None:
-                    print "更新服务"
+                    print("更新服务")
                     entity = rs[0]
                     entity.host=host,
                     entity.server=result[host]['pstree']
