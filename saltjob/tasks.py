@@ -458,9 +458,6 @@ def scanHostJob():
         manageInstance = salt_api_token({'fun': 'manage.status'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.runnerRun()
-        print("#####################")
-        print("status")
-        print(statusRresult['return'])
         upList = statusResult['return'][0]['up']
     except Exception as e:
         logger.info("没有任何主机启动状态信息:%s" % e)
@@ -664,9 +661,19 @@ def scanServerJob():
         manageInstance = salt_api_token({'fun': 'all_service.run','tgt': '*'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
-        logger.info("zhixing")
-        upList = statusResult['return']
-        logger.info("wancheng")
+        result = statusResult['return'][0]
+        for host in result.keys():
+            rs = Server.objects.filter(host=host)
+            if len(rs) == 0:
+                logger.info("新增服务:%s", host)
+                productname = ""
+
+
+                services = Server(host=host,
+
+                              )
+                service.save()
+
     except Exception as e:
         logger.info("发现的server有问题:%s" % e)
 
