@@ -174,19 +174,6 @@ urlpatterns = [
     url(r'assert_import/upload_file/', upload_file),
     url(r'assert_import/$', assert_import_index),
     # 服务
-    url(r'server/$',scan_server), {
-            'args': {
-                'modulename': 'cmdb.models',
-                'modelname': 'Host',
-                'list_url': '/frontend/cmdb/host_list/',
-                'form_template_path': 'frontend/cmdb/host_form.html',
-                'template_path': 'frontend/cmdb/host_list.html',
-                'add_title': '新增主机',
-                'add_action': '/frontend/cmdb/host_list/host_add_action/',
-                'edit_title': '编辑主机',
-                'edit_action': '/frontend/cmdb/host_list/%s/host_edit_action/',
-                'edit_form_plugin': 'host_edit_form_plugin',
-                'add_form_plugin': 'host_add_form_plugin'
-            }},
+    url(r'server/$',scan_server),
 
 ]
