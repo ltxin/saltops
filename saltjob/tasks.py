@@ -670,7 +670,7 @@ def scanServerJob():
 
 
                 services = Server(host=host,
-                                  server=result[host].['pstree']
+                                  server=result[host]['pstree']
 
                               )
                 services.save()
