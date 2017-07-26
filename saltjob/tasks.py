@@ -674,6 +674,14 @@ def scanServerJob():
 
                               )
                 services.save()
+            else:
+                rs = Server.objects.filter(host=host)
+                if rs is not None:
+                    entity = rs[0]
+                    entity.host=host,
+                    entity.server=server
+                    logger.info("nihao")
+                    entity.save()
 
     except Exception as e:
         logger.info("发现的server有问题:%s" % e)
