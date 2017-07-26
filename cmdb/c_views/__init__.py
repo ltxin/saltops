@@ -6,6 +6,7 @@ from .host_group import *
 from .host import *
 from .cabinet import *
 from .assert_import import *
+from .server import *
 
 
 @register.filter()

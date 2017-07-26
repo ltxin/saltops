@@ -654,3 +654,20 @@ def scanProjectConfig():
     project_config_file = ProjectConfigFile.objects.all()
     for project in project_config_file:
         loadProjectConfig(project.project.id)
+
+
+@task(name='scanServerJob')
+def scanServerJob():
+    logger.info('扫描MinionServer')
+    upList = []
+    try:
+        manageInstance = salt_api_token({'fun': 'all_service.run'},
+                                        SALT_REST_URL, {'X-Auth-Token': token_id()})
+        statusResult = manageInstance.runnerRun()
+
+        upList = statusResult['return'][0]['pstree']
+    except Exception as e:
+        logger.info("发现的server有问题:%s" % e)
+
+    logger.info("发现的server")
+    print(upList)

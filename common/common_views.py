@@ -28,7 +28,6 @@ def simple_list(request, args):
         print(i)
     obj = instance.objects.filter(**kwargs)
     result_list = preparePage(request, obj)
-    print(obj)
     return render(request, args['template_path'], locals(), RequestContext(request))
 
 
