@@ -20,20 +20,12 @@ from cmdb.models.Host import MINION_STATUS
 from common.pageutil import preparePage
 from django.forms import *
 
-from saltjob.tasks import scanHostJob
+from saltjob.tasks import scanServerJob
 
 
 @require_http_methods(["GET"])
 @gzip_page
 @login_required
 def scan_server(kwargs):
-    is_add = False
-    obj = Host.objects.get(pk=int(kwargs['pk']))
-    cabinet_list = Cabinet.objects.filter(idc=obj.idc)
-    rack_list = Rack.objects.filter(cabinet__in=cabinet_list)
-    host_ip_list = HostIP.objects.filter(host=obj)
-    return {'rack_list': rack_list,
-            'cabinet_list': cabinet_list,
-            'is_add': is_add,
-            'host_ip_list': host_ip_list
-            }
+    scanServerJob()
+    return HttpResponse("")
