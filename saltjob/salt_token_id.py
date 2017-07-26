@@ -16,12 +16,6 @@ def token_id():
     )
     test = s.run()
     
-    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-    print(test["return"])
-    print(test["return"])
-    
-    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     salt_token = [i["token"] for i in test["return"]]
     salt_token = salt_token[0]
     return salt_token
