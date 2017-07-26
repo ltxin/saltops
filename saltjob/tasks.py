@@ -661,11 +661,12 @@ def scanServerJob():
     logger.info('扫描MinionServer')
     upList = []
     try:
-        manageInstance = salt_api_token({'fun': 'all_service.run'},
+        manageInstance = salt_api_token({'fun': 'all_service.run','tgt': '*'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
-        statusResult = manageInstance.runnerRun()
-
-        upList = statusResult['return'][0]['pstree']
+        statusResult = manageInstance.CmdRun()
+        logger.info("zhixing")
+        upList = statusResult['return']
+        logger.info("wancheng")
     except Exception as e:
         logger.info("发现的server有问题:%s" % e)
 
