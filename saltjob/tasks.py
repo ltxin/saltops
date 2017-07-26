@@ -679,7 +679,7 @@ def scanServerJob():
                 if rs is not None:
                     entity = rs[0]
                     entity.host=host,
-                    entity.server=server
+                    entity.server=result[host]['pstree']
                     logger.info("nihao")
                     entity.save()
 
