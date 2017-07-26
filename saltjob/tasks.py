@@ -672,7 +672,7 @@ def scanServerJob():
                 services = Server(host=host,
 
                               )
-                service.save()
+                services.save()
 
     except Exception as e:
         logger.info("发现的server有问题:%s" % e)
