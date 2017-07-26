@@ -3,8 +3,6 @@ from saltops.settings import SALT_REST_URL, SALT_USER, SALT_PASSWORD
 
 
 def token_id():
-    print('ooooooooooooooo')
-   
     s = salt_api_token(
         {
             "username": SALT_USER,
