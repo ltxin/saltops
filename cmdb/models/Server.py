@@ -6,6 +6,7 @@ from cmdb.models.Cabinet import Cabinet
 from cmdb.models.IDC import IDC
 from cmdb.models.Rack import Rack
 from common.models import BaseModel
+from cmdb.models.Host import Host
 class Server(BaseModel):
     host_group = models.ForeignKey(HostGroup, verbose_name='主机组', blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True, verbose_name="主机名")
