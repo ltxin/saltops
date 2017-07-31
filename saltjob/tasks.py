@@ -701,5 +701,5 @@ def scanNginxJob():
         result = statusResult['return'][0]
         print(result)
     except Exception as e:
-        logger.info("发现的server" e)
+        logger.info("发现的server" % e)
     print(upList)
