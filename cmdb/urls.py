@@ -175,5 +175,7 @@ urlpatterns = [
     url(r'assert_import/$', assert_import_index),
     # 服务
     url(r'server/$',scan_server),
+    #nginx
+    url(r'nginx/$',scan_nginx),
 
 ]
