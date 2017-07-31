@@ -7,7 +7,7 @@ from .host import *
 from .cabinet import *
 from .assert_import import *
 from .server import *
-
+from .nginx import *
 
 @register.filter()
 def cabinet_count(value):
