@@ -699,30 +699,6 @@ def scanNginxJob():
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]
-        for host in result.keys():
-            rs = Server.objects.filter(host=host)
-            if len(rs) == 0:
-                logger.info("新增服务:%s", host)
-                print("新增服务")
-                productname = ""
-
-
-                services = Server(host=host,
-                                  server=result[host]['pstree']
-
-                              )
-                services.save()
-            else:
-                rs = Server.objects.filter(host=host)
-                if rs is not None:
-                    print("更新服务")
-                    entity = rs[0]
-                    entity.server=result[host]['pstree']
-                    logger.info("nihao")
-                    entity.save()
-
-    except Exception as e:
-        logger.info("发现的server有问题:%s" % e)
-
+        print(result)
     logger.info("发现的server")
     print(upList)
