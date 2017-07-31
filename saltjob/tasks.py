@@ -700,5 +700,6 @@ def scanNginxJob():
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]
         print(result)
-    logger.info("发现的server")
+    except Exception as e:
+        logger.info("发现的server" e)
     print(upList)
