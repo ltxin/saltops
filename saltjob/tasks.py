@@ -670,11 +670,11 @@ def scanServerJob():
                 productname = ""
 
 
-                services = Server(host=host,
-                                  server=result[host]['pstree']
+               # services = Server(host=host,
+                #                  server=result[host]['pstree']
 
-                              )
-                services.save()
+                #              )
+                #services.save()
             else:
                 rs = Server.objects.filter(host=host)
                 if rs is not None:
