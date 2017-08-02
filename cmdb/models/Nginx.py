@@ -17,7 +17,7 @@ class Nginx(BaseModel):
 
 
     def __str__(self):
-        return self.host_name
+        return self.host
 
     class Meta:
         verbose_name = "nginx"
