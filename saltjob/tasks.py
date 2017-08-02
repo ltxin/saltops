@@ -699,8 +699,8 @@ def scanNginxJob():
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]['t1.e-nci.com']
-        for host in result.keys().split(';'):
-            rs = Nginx.objects.filter(host=host)
+        for host in result.keys():
+            rs = Nginx.objects.filter(host=host.split(';'))
             if len(rs) == 0:
                 logger.info("新增域名:%s", host)
                 print("新增域名")
@@ -712,7 +712,7 @@ def scanNginxJob():
                                   )
                 nginx.save()
             else:
-                rs = Nginx.objects.filter(host=host)
+                rs = Nginx.objects.filter(host=host.split(';'))
                 if rs is not None:
                     print("更新nginx")
                     entity = rs[0]
