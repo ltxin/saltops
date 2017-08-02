@@ -8,5 +8,5 @@ from .ServiceName import ServiceName
 from .Rack import Rack
 from .HostGroup import HostGroup
 from .Server import Server
-from .Nginx import  import Nginx
+from .Nginx import   Nginx
 
