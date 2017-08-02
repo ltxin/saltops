@@ -700,19 +700,19 @@ def scanNginxJob():
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]['t1.e-nci.com']
         for host in result.keys():
-            rs = Nginx.objects.filter(host=host.split(';'))
+            rs = Nginx.objects.filter(host=host)
             if len(rs) == 0:
                 logger.info("新增域名:%s", host)
                 print("新增域名")
                 productname = ""
 
-                nginx = Nginx(host=host.split(';'),
-                                  real_server=result[host]
+                nginx = Nginx(host=host,
+                                  real_server=result[host].split(';')
 
                                   )
                 nginx.save()
             else:
-                rs = Nginx.objects.filter(host=host.split(';'))
+                rs = Nginx.objects.filter(host=host)
                 if rs is not None:
                     print("更新nginx")
                     entity = rs[0]
