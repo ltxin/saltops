@@ -188,7 +188,7 @@ urlpatterns = [
                 'edit_form_plugin': 'server_edit_form_plugin',
                 'add_form_plugin': 'server_add_form_plugin'
             }}),
-    url(r'server_list/scan_nginx/', scan_nginx),
+    url(r'nginx_list/scan_nginx/', scan_nginx),
     # nginx
     url('^nginx_list/', include([
         url(r'$', simple_list),
