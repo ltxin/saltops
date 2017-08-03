@@ -1,7 +1,7 @@
 {% extends 'frontend/common/basic_list.html' %}
 
 {% block list_title %}
-    服务
+    nginx
 {% endblock %}
 
 {% block list_filter %}
@@ -21,7 +21,7 @@
                class="btn btn-sm btn-success"> 新增</a>&nbsp;
             <a href="javascript:void(0)"
                onclick="scan_host()"
-               class="btn btn-sm btn-success"> 扫描服务</a>
+               class="btn btn-sm btn-success"> 扫描nginx</a>
             &nbsp;
             <a href="javascript:void(0)"
                onclick="deleteBatch()"
@@ -31,7 +31,7 @@
     <script>
         function scan_host() {
             layer.load();
-            $.get('/frontend/cmdb/server_list/scan_server/', function () {
+            $.get('/frontend/cmdb/nginx_list/scan_nginx/', function () {
                 location.reload()
                 layer.closeAll('loading');
             })
@@ -56,7 +56,7 @@
             <th style="width:3%;"><input id="checkall" type="checkbox" class="i-checks"></th>
             <th style="width: 8%;">zhu</th>
             <th style="width: 8%;">主机</th>
-            <th style="width: 8%;">服务名</th>
+            <th style="width: 8%;">real_ip</th>
             <th style="width: 8%;">操作</th>
 
         </tr>
@@ -71,7 +71,7 @@
                     无
                 {% else %}
                     <td>{{ o.host }}</td>
-                    <td>{{ o.server}}</td>
+                    <td>{{ o.real_server}}</td>
                 {% endifequal %}
 
                 <td>

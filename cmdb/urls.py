@@ -188,6 +188,24 @@ urlpatterns = [
                 'edit_form_plugin': 'server_edit_form_plugin',
                 'add_form_plugin': 'server_add_form_plugin'
             }}),
+    url(r'server_list/scan_nginx/', scan_nginx),
+    # nginx
+    url('^nginx_list/', include([
+        url(r'$', simple_list),
+    ]), {
+            'args': {
+                'modulename': 'cmdb.models',
+                'modelname': 'Nginx',
+                'list_url': '/frontend/cmdb/nginx_list/',
+                'form_template_path': 'frontend/cmdb/nginx_form.html',
+                'template_path': 'frontend/cmdb/nginx_list.html',
+                'add_title': '新增服务',
+                'add_action': '/frontend/cmdb/nginx_list/nginx_add_action/',
+                'edit_title': '编辑服务',
+                'edit_action': '/frontend/cmdb/nginx_list/%s/nginx_edit_action/',
+                'edit_form_plugin': 'nginx_edit_form_plugin',
+                'add_form_plugin': 'nginx_add_form_plugin'
+            }}),
     # 资产导入
     url(r'assert_import/upload_file/', upload_file),
     url(r'assert_import/$', assert_import_index),
