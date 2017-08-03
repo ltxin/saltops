@@ -170,6 +170,24 @@ urlpatterns = [
                 'add_form_plugin': 'host_add_form_plugin'
             }}),
 
+    url(r'server_list/scan_server/', scan_server),
+    # 服务
+    url('^server_list/', include([
+        url(r'$', simple_list),
+    ]), {
+            'args': {
+                'modulename': 'cmdb.models',
+                'modelname': 'Server',
+                'list_url': '/frontend/cmdb/server_list/',
+                'form_template_path': 'frontend/cmdb/server_form.html',
+                'template_path': 'frontend/cmdb/server_list.html',
+                'add_title': '新增服务',
+                'add_action': '/frontend/cmdb/server_list/server_add_action/',
+                'edit_title': '编辑服务',
+                'edit_action': '/frontend/cmdb/server_list/%s/server_edit_action/',
+                'edit_form_plugin': 'server_edit_form_plugin',
+                'add_form_plugin': 'server_add_form_plugin'
+            }}),
     # 资产导入
     url(r'assert_import/upload_file/', upload_file),
     url(r'assert_import/$', assert_import_index),
