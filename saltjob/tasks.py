@@ -700,7 +700,6 @@ def scanNginxJob():
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]['t1.e-nci.com']
         for host in result.keys():
-            host=host.split(';')
             rs = Nginx.objects.filter(host=host)
             if len(rs) == 0:
                 logger.info("新增域名:%s", host)
