@@ -6,7 +6,7 @@ def preparePage(request, dataList):
     page = 1
     if 'page' in request.GET:
         page = int(request.GET['page'])
-    paginator = Paginator(dataList, 10)
+    paginator = Paginator(dataList, 30)
     try:
         list = paginator.page(page)
     except PageNotAnInteger:
