@@ -78,7 +78,8 @@
                 <td>{% ifequal o.host None %}
                     无
                 {% else %}
-                    {{ o.host }}
+                    <td>{{ o.host }}</td>
+                    <td>{{ o.server}}</td>
                 {% endifequal %}
 
                 <td>
