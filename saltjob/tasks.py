@@ -698,6 +698,7 @@ def scanNginxJob():
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 'nginx','expr_form':'nodegroups'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
+        print(statusResult)
         result = statusResult['return'][0]['t1.e-nci.com']
         for host in result.keys():
             rs = Nginx.objects.filter(host=host)
