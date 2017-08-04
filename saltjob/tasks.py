@@ -695,7 +695,7 @@ def scanNginxJob():
     logger.info('扫描Nginx')
     upList = []
     try:
-        manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com','expr_form':'list'},
+        manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 'nginx','expr_form':'nodegroups'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
         result = statusResult['return'][0]['t1.e-nci.com']
