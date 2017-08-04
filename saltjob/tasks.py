@@ -695,31 +695,31 @@ def scanNginxJob():
     logger.info('扫描Nginx')
     upList = []
     try:
-        manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 'nginx','expr_form':'nodegroup'},
+        manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,10.110.1.132','expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
         statusResult = manageInstance.CmdRun()
-        print(statusResult)
-        result = statusResult['return'][0]['t1.e-nci.com']
-        for host in result.keys():
-            rs = Nginx.objects.filter(host=host)
-            if len(rs) == 0:
-                logger.info("新增域名:%s", host)
-                print("新增域名")
-                productname = ""
-
-                nginx = Nginx(host=host,
-                                  real_server=result[host]
-
-                                  )
-                nginx.save()
-            else:
+        for l in ['t1.e-nci.com','10.110.1.132']:
+            result = statusResult['return'][0][l]
+            for host in result.keys():
                 rs = Nginx.objects.filter(host=host)
-                if rs is not None:
-                    print("更新nginx")
-                    entity = rs[0]
-                    entity.real_server = result[host]
-                    logger.info("更新nginx完毕")
-                    entity.save()
+                if len(rs) == 0:
+                    logger.info("新增域名:%s", host)
+                    print("新增域名")
+                    productname = ""
+
+                    nginx = Nginx(host=host,
+                                      real_server=result[host]
+
+                                      )
+                    nginx.save()
+                else:
+                    rs = Nginx.objects.filter(host=host)
+                    if rs is not None:
+                        print("更新nginx")
+                        entity = rs[0]
+                        entity.real_server = result[host]
+                        logger.info("更新nginx完毕")
+                        entity.save()
 
     except Exception as e:
         logger.info("发现的nginx有问题:%s" % e)
