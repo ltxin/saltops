@@ -671,16 +671,17 @@ def scanServerJob():
 
                 for s in result[host]['pstree']:
                     services = Server(host=host,server=s)
-                services.save()
+                    services.save()
             else:
                 rs = Server.objects.filter(host=host)
                 if rs is not None:
                     print("更新服务")
-                    entity = rs[0]
+                    #entity = rs[0]
                     for s in result[host]['pstree']:
+                        entity = rs[0]
                         entity.server=s
                         logger.info("nihao")
-                    entity.save()
+                        entity.save()
 
     except Exception as e:
         logger.info("发现的server有问题:%s" % e)
