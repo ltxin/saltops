@@ -669,19 +669,17 @@ def scanServerJob():
                 print("新增服务")
                 productname = ""
 
-
-                services = Server(host=host,
-                                server=result[host]['pstree']
-
-                             )
+                for s in result[host]['pstree']:
+                    services = Server(host=host,server=s)
                 services.save()
             else:
                 rs = Server.objects.filter(host=host)
                 if rs is not None:
                     print("更新服务")
                     entity = rs[0]
-                    entity.server=result[host]['pstree']
-                    logger.info("nihao")
+                    for s in result[host]['pstree']:
+                        entity.server=s
+                        logger.info("nihao")
                     entity.save()
 
     except Exception as e:
