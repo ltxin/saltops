@@ -676,9 +676,9 @@ def scanServerJob():
                 rs = Server.objects.filter(host=host)
                 if rs is not None:
                     print("更新服务")
-                    #entity = rs[0]
+                    entity = rs[0]
                     for s in result[host]['pstree']:
-                        entity = rs[0]
+
                         entity.server=s
                         logger.info("nihao")
                         entity.save()
