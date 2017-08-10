@@ -10,6 +10,7 @@ from cmdb.models.Host import Host
 class Nginx(BaseModel):
     host_group = models.ForeignKey(HostGroup, verbose_name='主机组', blank=True, null=True)
     host = models.CharField(max_length=255, blank=True, null=True, verbose_name="域名")
+    host_name = models.CharField(max_length=255, blank=True, null=True, verbose_name="主机名")
     real_server = models.CharField(max_length=255, blank=True, null=True, verbose_name="后端机器")
     mem_total = models.CharField(max_length=255, blank=True, null=True, verbose_name="内存总数")
     num_cpus = models.IntegerField(blank=True, null=True, verbose_name="CPU数量")
