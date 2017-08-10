@@ -54,7 +54,7 @@
         <thead>
         <tr>
             <th style="width:3%;"><input id="checkall" type="checkbox" class="i-checks"></th>
-            <th style="width: 8%;">zhu</th>
+            <th style="width: 8%;">宿主机</th>
             <th style="width: 8%;">主机</th>
             <th style="width: 8%;">real_ip</th>
             <th style="width: 8%;">操作</th>
@@ -70,6 +70,7 @@
                 <td>{% ifequal o.host None %}
                     无
                 {% else %}
+                    <td>{{ o.host_name }}</td>
                     <td>{{ o.host }}</td>
                     <td>{{ o.real_server}}</td>
                 {% endifequal %}

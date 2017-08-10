@@ -707,7 +707,8 @@ def scanNginxJob():
                     productname = ""
 
                     nginx = Nginx(host=host,
-                                      real_server=result[host]
+                                      real_server=result[host],
+                                      host_name=l
 
                                       )
                     nginx.save()
@@ -717,6 +718,7 @@ def scanNginxJob():
                         print("更新nginx")
                         entity = rs[0]
                         entity.real_server = result[host]
+                        entity.host_name = l
                         logger.info("更新nginx完毕")
                         entity.save()
 
