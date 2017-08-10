@@ -67,9 +67,9 @@
                 <td>
                     <input type="checkbox" class="i-checks icheck" id="{{ o.id }}" name="input[]">
                 </td>
-                <td>{% ifequal o.host None %}
-                    无
-                    </td>
+                {% ifequal o.host None %}
+                   <td>无</td>
+
                 {% else %}
                     <td>{{ o.host_name }}</td>
                     <td>{{ o.host }}</td>
