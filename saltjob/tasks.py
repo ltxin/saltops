@@ -693,6 +693,10 @@ def scanServerJob():
 def scanNginxJob():
     logger.info('扫描Nginx')
     upList = []
+
+    ng=Server.objects.get(server='nginx')
+    print(ng)
+
     try:
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
