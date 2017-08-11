@@ -694,38 +694,40 @@ def scanNginxJob():
     upList = []
 
     ng=Server.objects.filter(server='nginx')
-    logger.info("ng begin")
-    logger.info(ng[1])
 
-    try:
-        manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
+    if len(ng) == 0:
+        logger.info("ng have no")
+    else:
+        logger.info("list(ng)")
+        try:
+            manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
-        statusResult = manageInstance.CmdRun()
-        for l in ['t1.e-nci.com','qiantaicache-1']:
-            result = statusResult['return'][0][l]
-            for host in result.keys():
-                rs = Nginx.objects.filter(host=host)
-                if len(rs) == 0:
+            statusResult = manageInstance.CmdRun()
+            for l in ['t1.e-nci.com','qiantaicache-1']:
+                result = statusResult['return'][0][l]
+                for host in result.keys():
+                    rs = Nginx.objects.filter(host=host)
+                    if len(rs) == 0:
 
-                    productname = ""
+                        productname = ""
 
-                    nginx = Nginx(host=host,
+                        nginx = Nginx(host=host,
                                       real_server=result[host],
                                       host_name=l
 
                                       )
-                    nginx.save()
-                else:
-                    rs = Nginx.objects.filter(host=host)
-                    if rs is not None:
+                        nginx.save()
+                    else:
+                        rs = Nginx.objects.filter(host=host)
+                        if rs is not None:
 
-                        entity = rs[0]
-                        entity.real_server = result[host]
-                        entity.host_name = l
+                            entity = rs[0]
+                            entity.real_server = result[host]
+                            entity.host_name = l
 
-                        entity.save()
-        logger.info("更新nginx完毕")
-    except Exception as e:
-        logger.info("发现的nginx有问题:%s" % e)
+                            entity.save()
+            logger.info("更新nginx完毕")
+        except Exception as e:
+            logger.info("发现的nginx有问题:%s" % e)
 
     logger.info("发现的nginx")
