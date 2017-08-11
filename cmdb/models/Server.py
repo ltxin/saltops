@@ -16,7 +16,7 @@ class Server(BaseModel):
     server = models.CharField(max_length=255, blank=True, null=True, verbose_name="服务")
 
     def __str__(self):
-        return self.host_name
+        return self.host
 
     class Meta:
         verbose_name = "服务"
