@@ -698,7 +698,7 @@ def scanNginxJob():
     if len(ng) == 0:
         logger.info("ng have no")
     else:
-        logger.info("list(ng)")
+        logger.info(list(ng))
         try:
             manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
