@@ -701,7 +701,7 @@ def scanNginxJob():
         s=''
         for i in ng:
             logger.info(i)
-            #s=s + ',' + i
+            s = s + ',' + str(i)
         try:
             manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': s,'expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
@@ -733,4 +733,3 @@ def scanNginxJob():
         except Exception as e:
             logger.info("发现的nginx有问题:%s" % e)
 
-    logger.info("发现的nginx")
