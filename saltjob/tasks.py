@@ -691,11 +691,11 @@ def scanServerJob():
 
 @task(name='scanNginxJob')
 def scanNginxJob():
-    logger.info('扫描Nginx')
     upList = []
 
     ng=Server.objects.filter(server='nginx')
-    print(ng.host)
+    print("ng chaxun")
+    print(ng)
 
     try:
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
@@ -707,7 +707,6 @@ def scanNginxJob():
                 rs = Nginx.objects.filter(host=host)
                 if len(rs) == 0:
                     logger.info("新增域名:%s", host)
-                    print("新增域名")
                     productname = ""
 
                     nginx = Nginx(host=host,
@@ -719,7 +718,7 @@ def scanNginxJob():
                 else:
                     rs = Nginx.objects.filter(host=host)
                     if rs is not None:
-                        print("更新nginx")
+
                         entity = rs[0]
                         entity.real_server = result[host]
                         entity.host_name = l
