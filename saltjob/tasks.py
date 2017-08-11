@@ -695,6 +695,7 @@ def scanNginxJob():
     upList = []
 
     ng=Server.objects.filter(server='nginx')
+    print("ng的get地方")
     print(ng)
 
     try:
