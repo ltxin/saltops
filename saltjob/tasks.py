@@ -695,7 +695,7 @@ def scanNginxJob():
 
     ng=Server.objects.filter(server='nginx')
     logger.info("ng begin")
-    print(ng)
+    print(ng[1])
 
     try:
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
