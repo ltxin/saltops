@@ -695,8 +695,7 @@ def scanNginxJob():
     upList = []
 
     ng=Server.objects.filter(server='nginx')
-    print("ng的get地方")
-    print(ng)
+    print(ng.host)
 
     try:
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
