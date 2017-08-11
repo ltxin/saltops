@@ -694,7 +694,7 @@ def scanNginxJob():
     upList = []
 
     ng=Server.objects.filter(server='nginx')
-    print("ng chaxun")
+    logger.info("ng begin")
     print(ng)
 
     try:
@@ -706,7 +706,7 @@ def scanNginxJob():
             for host in result.keys():
                 rs = Nginx.objects.filter(host=host)
                 if len(rs) == 0:
-                    logger.info("新增域名:%s", host)
+
                     productname = ""
 
                     nginx = Nginx(host=host,
@@ -722,9 +722,9 @@ def scanNginxJob():
                         entity = rs[0]
                         entity.real_server = result[host]
                         entity.host_name = l
-                        logger.info("更新nginx完毕")
-                        entity.save()
 
+                        entity.save()
+                logger.info("更新nginx完毕")
     except Exception as e:
         logger.info("发现的nginx有问题:%s" % e)
 
