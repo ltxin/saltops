@@ -700,7 +700,8 @@ def scanNginxJob():
     else:
         s=''
         for i in ng:
-            s=s + ',' + i
+            logger.info(i)
+            #s=s + ',' + i
         try:
             manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': s,'expr_form':'list'},
                                         SALT_REST_URL, {'X-Auth-Token': token_id()})
