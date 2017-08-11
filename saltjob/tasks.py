@@ -695,7 +695,7 @@ def scanNginxJob():
 
     ng=Server.objects.filter(server='nginx')
     logger.info("ng begin")
-    print(ng[1])
+    logger.info(ng[1])
 
     try:
         manageInstance = salt_api_token({'fun': 'dis_nginx.run','tgt': 't1.e-nci.com,qiantaicache-1','expr_form':'list'},
@@ -724,7 +724,7 @@ def scanNginxJob():
                         entity.host_name = l
 
                         entity.save()
-                logger.info("更新nginx完毕")
+        logger.info("更新nginx完毕")
     except Exception as e:
         logger.info("发现的nginx有问题:%s" % e)
 
