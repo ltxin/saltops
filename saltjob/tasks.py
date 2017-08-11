@@ -694,7 +694,7 @@ def scanNginxJob():
     logger.info('扫描Nginx')
     upList = []
 
-    ng=Server.objects.get(server='nginx')
+    ng=Server.objects.filter(server='nginx')
     print(ng)
 
     try:
